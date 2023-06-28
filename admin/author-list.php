@@ -205,24 +205,22 @@
                         <td class="px-6 py-3">
                           <?php echo $row['author_email']; ?>
                         </td>
-                        <td class="px-6 py-3">
+                        <td>
                           <?php
                           $t = $row['author_account_status'];
                           if ($t == 1) {
                             ?>
-                            <span
-                              class="inline-flex items-center gap-1 rounded-full bg-green-50 px-2.5 py-1.5 text-xs font-semibold text-green-600">
-                              <span class="h-2 w-2 rounded-full bg-green-600"></span>
-                              Active
-                            </span>
+                            <div class="d-flex align-items-center">
+                              <div style="width:8px;height:8px; background:green;" class="rounded-pill"></div>
+                              <span class="px-2 ">Active</span>
+                            </div>
                             <?php
                           } else {
                             ?>
-                            <span
-                              class="inline-flex items-center gap-1 rounded-full bg-red-50 px-2.5 py-1.5 text-xs font-semibold text-green-600">
-                              <span class="h-2 w-2 rounded-full bg-red-600"></span>
-                              Inactive
-                            </span>
+                            <div class="d-flex align-items-center">
+                              <div style="width:8px;height:8px; background:green;" class="rounded-pill"></div>
+                              <span class="px-2 ">inactive</span>
+                            </div>
                             <?php
                           }
                           ?>

@@ -5,6 +5,26 @@
   <?php
   include('./session.php');
   ?>
+  <?php
+  include_once('../config.php');
+  $ID = isset($_REQUEST['news_id']) ? $_REQUEST['news_id'] : '';
+  // $query = "SELECT * FROM `tblnews` WHERE `news_id`='$ID'";
+  $query = "SELECT
+  `tblnews`.`news_id`,
+  `news_title`,
+  `news_content`,
+  `tblnewscategory`.`category_name`,
+  `tblauthor`.`author_name`,
+  `tblnews`.`created_date`,
+  `tblnews`.`image`,
+  `news_status`
+  FROM `tblnews`
+  INNER JOIN `tblnewscategory` ON `tblnewscategory`.`category_id` = `tblnews`.`category_id`
+  INNER JOIN `tblauthor` ON `tblauthor`.`author_id` = `tblnews`.`author_id`
+  WHERE `news_id`='$ID'";
+  $result = mysqli_query($conn, $query);
+  $item = mysqli_fetch_array($result);
+  ?>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -137,113 +157,107 @@
     <div id="layoutSidenav_content">
       <main>
         <div class="container-fluid px-4">
-          <h1 class="mt-4">Home</h1>
-          <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">Home</li>
-          </ol>
-          <div class="container">
-            <?php
-            include_once('../config.php');
-            $query = "SELECT * FROM `tblnews` ORDER BY `news_id` DESC ";
-            $result = mysqli_query($conn, $query);
-            $firstPost = "SELECT * FROM `tblnews` ORDER BY `news_id` LIMIT 1";
-            $firstPostResult = mysqli_query($conn, $firstPost);
-            ?>
+          <div class="container mt-5">
             <div class="row">
               <div class="col-lg-8">
-                <?php if ($firstPostResult) {
-                  $row = mysqli_fetch_assoc($firstPostResult);
-                  $date = $row['created_date'];
-                  $datetime = new DateTime($date);
-                  $output = $datetime->format("F j Y"); ?>
-                  <div class="card mb-4">
-                    <a href="#!"><img class="card-img-top" src="../images/<?php echo $row['image'] ?>" alt="..." /></a>
-                    <div class="card-body">
-                      <div class="small text-muted">
-                        <?php
-                        echo $output;
-                        ?>
-                      </div>
-                      <h2 class="card-title">
-                        <?php echo $row['news_title'] ?>
-                      </h2>
-                      <p class="card-text">
-                        <?php echo $row['news_content'] ?>
-                      </p>
-                      <a class="btn btn-primary" href="./news-view.php?news_id=<?php echo $row['news_id'] ?>">Read more
-                        →</a>
+                <!-- Post content-->
+                <article>
+                  <!-- Post header-->
+                  <header class="mb-4">
+                    <!-- Post title-->
+                    <h1 class="fw-bolder mb-1">
+                      <?= $item['news_title'] ?>
+                    </h1>
+                    <!-- Post meta content-->
+                    <div class="text-muted fst-italic mb-2">
+                      Posted on
+                      <?php
+                      $date = $item['created_date'];
+                      $datetime = new DateTime($date);
+
+                      echo $datetime->format("F j Y"); ?>
+                      by
+                      <?= $item['author_name'] ?>
                     </div>
-                  </div>
-                  <?php
-                }
-                ?>
-                <!-- Nested row for non-featured blog posts-->
-                <div class="row">
-                  <?php
-                  if (
-                    mysqli_num_rows($result) >
-                    0
-                  ) {
-                    while ($row = mysqli_fetch_array($result)) { ?>
-                      <div class="col-lg-6">
-                        <!-- Blog post-->
-                        <div class="card mb-4">
-                          <a href="#!"><img class="card-img-top" style="height: 350px"
-                              src="../images/<?php echo $row['image'] ?>" alt="..." /></a>
-                          <div class="card-body">
-                            <div class="small text-muted">
-                              <?php
-                              // The input date
-                              $date = $row['created_date'];
-
-                              // Create a DateTime object from the input date
-                              $datetime = new DateTime($date);
-
-                              // Format the DateTime object to the desired output format
-                              echo $datetime->format("F j Y"); // Print the output echo $output; ?>
+                    <!-- Post categories-->
+                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">
+                      <?= $item['category_name'] ?>
+                    </a>
+                  </header>
+                  <!-- Preview image figure-->
+                  <figure class="mb-4">
+                    <img class="img-fluid rounded" src="../images/<?php echo $item['image'] ?>" alt="..." />
+                  </figure>
+                  <!-- Post content-->
+                  <section class="mb-5">
+                    <p class="fs-5 mb-4">
+                      <?php echo nl2br($item['news_content']); ?>
+                    </p>
+                  </section>
+                </article>
+                <!-- Comments section-->
+                <section class="mb-5">
+                  <div class="card bg-light">
+                    <div class="card-body">
+                      <!-- Comment form-->
+                      <form class="mb-4">
+                        <textarea class="form-control" rows="3"
+                          placeholder="Join the discussion and leave a comment!"></textarea>
+                      </form>
+                      <!-- Comment with nested comments-->
+                      <div class="d-flex mb-4">
+                        <!-- Parent comment-->
+                        <div class="flex-shrink-0">
+                          <img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." />
+                        </div>
+                        <div class="ms-3">
+                          <div class="fw-bold">Commenter Name</div>
+                          If you're going to lead a space frontier, it has to
+                          be government; it'll never be private enterprise.
+                          Because the space frontier is dangerous, and it's
+                          expensive, and it has unquantified risks.
+                          <!-- Child comment 1-->
+                          <div class="d-flex mt-4">
+                            <div class="flex-shrink-0">
+                              <img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg"
+                                alt="..." />
                             </div>
-                            <h2 class="card-title h4">
-                              <?php echo $row['news_title']; ?>
-                            </h2>
-                            <p class="card-text">
-                              <?php echo $row['news_content']; ?>
-                            </p>
-                            <a class="btn btn-primary" href="#!">Read more →</a>
+                            <div class="ms-3">
+                              <div class="fw-bold">Commenter Name</div>
+                              And under those conditions, you cannot establish
+                              a capital-market evaluation of that enterprise.
+                              You can't get investors.
+                            </div>
+                          </div>
+                          <!-- Child comment 2-->
+                          <div class="d-flex mt-4">
+                            <div class="flex-shrink-0">
+                              <img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg"
+                                alt="..." />
+                            </div>
+                            <div class="ms-3">
+                              <div class="fw-bold">Commenter Name</div>
+                              When you put money directly to a problem, it
+                              makes a good headline.
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <?php
-                    }
-                  }
-                  ?>
-                </div>
-                <!-- Pagination-->
-                <nav aria-label="Pagination">
-                  <hr class="my-0" />
-                  <ul class="pagination justify-content-center my-4">
-                    <li class="page-item disabled">
-                      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a>
-                    </li>
-                    <li class="page-item active" aria-current="page">
-                      <a class="page-link" href="#!">1</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#!">2</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#!">3</a>
-                    </li>
-                    <li class="page-item disabled">
-                      <a class="page-link" href="#!">...</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#!">15</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#!">Older</a>
-                    </li>
-                  </ul>
-                </nav>
+                      <!-- Single comment-->
+                      <div class="d-flex">
+                        <div class="flex-shrink-0">
+                          <img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." />
+                        </div>
+                        <div class="ms-3">
+                          <div class="fw-bold">Commenter Name</div>
+                          When I look at the universe and all the ways the
+                          universe wants to kill us, I find it hard to
+                          reconcile that with statements of beneficence.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
               </div>
               <!-- Side widgets-->
               <div class="col-lg-4">
@@ -299,7 +313,6 @@
                     card component!
                   </div>
                 </div>
-
               </div>
             </div>
           </div>
