@@ -157,7 +157,8 @@
                   $datetime = new DateTime($date);
                   $output = $datetime->format("F j Y"); ?>
                   <div class="card mb-4">
-                    <a href="#!"><img class="card-img-top" src="../images/<?php echo $row['image'] ?>" alt="..." /></a>
+                    <a href="./news-view.php?news_id=<?php echo $row['news_id'] ?>"><img class="card-img-top"
+                        src="../images/<?php echo $row['image'] ?>" alt="..." /></a>
                     <div class="card-body">
                       <div class="small text-muted">
                         <?php
@@ -188,8 +189,8 @@
                       <div class="col-lg-6">
                         <!-- Blog post-->
                         <div class="card mb-4">
-                          <a href="#!"><img class="card-img-top" style="height: 350px"
-                              src="../images/<?php echo $row['image'] ?>" alt="..." /></a>
+                          <a href="./news-view.php?news_id=<?php echo $row['news_id'] ?>"><img class="card-img-top"
+                              style="height: 350px" src="../images/<?php echo $row['image'] ?>" alt="..." /></a>
                           <div class="card-body">
                             <div class="small text-muted">
                               <?php
@@ -208,7 +209,8 @@
                             <p class="card-text">
                               <?php echo $row['news_content']; ?>
                             </p>
-                            <a class="btn btn-primary" href="#!">Read more →</a>
+                            <a class="btn btn-primary" href="./news-view.php?news_id=<?php echo $row['news_id'] ?>">Read
+                              more →</a>
                           </div>
                         </div>
                       </div>

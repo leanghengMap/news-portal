@@ -173,15 +173,13 @@
                     <th scope="col" class="px-6 py-3 font-medium text-gray-900">
                       Status
                     </th>
-                    <th scope="col" class="px-6 py-3 font-medium text-gray-900">
-                      Created Date
-                    </th>
+                   
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100 border-t border-gray-100">
                   <?php
                   include_once('../config.php');
-                  $query = "SELECT * FROM `tblauthor` ORDER BY `author_id`";
+                  $query = "SELECT * FROM `tblsubscriber` ORDER BY `subscriber_id`";
                   $result = mysqli_query($conn, $query);
                   if (
                     mysqli_num_rows($result) >
@@ -190,24 +188,24 @@
                     while ($row = mysqli_fetch_array($result)) { ?>
                       <tr class="hover:bg-gray-50">
                         <td class="px-6 py-3">
-                          <?php echo $row['author_id'] ?>
+                          <?php echo $row['subscriber_id'] ?>
                         </td>
                         <td>
                           <img style="width:40px;height:40px" class="rounded-pill object-cover object-center"
-                            src="../images/<?php echo $row['img'] ?>" alt="<?php echo $row['img'] ?>" />
+                            src="../images/<?php echo $row['iamge'] ?>" alt="<?php echo $row['iamge'] ?>" />
                         </td>
                         <td class="px-6 py-3">
-                          <?php echo $row['author_name']; ?>
+                          <?php echo $row['subscriber_name']; ?>
                         </td>
                         <td class="px-6 py-3">
-                          <?php echo $row['last_name']; ?>
+                          <?php echo $row['lastname']; ?>
                         </td>
                         <td class="px-6 py-3">
-                          <?php echo $row['author_email']; ?>
+                          <?php echo $row['subscriber_email']; ?>
                         </td>
                         <td class="px-6 py-3">
                           <?php
-                          $t = $row['author_account_status'];
+                          $t = $row['account_status'];
                           if ($t == 1) {
                             ?>
                             <span
@@ -227,9 +225,7 @@
                           }
                           ?>
                         </td>
-                        <td class="px-6 py-3">
-                          <?php echo $row['create_date'] ?>
-                        </td>
+                       
                       </tr>
                       <?php
                     }
