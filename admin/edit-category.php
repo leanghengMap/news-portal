@@ -8,10 +8,10 @@
     ?>
     <?php
     include_once('../config.php');
-    $ID = isset($_REQUEST['news_id']) ? $_REQUEST['news_id'] : '';
-    $query = "SELECT * FROM `tblnews` WHERE `news_id`='$ID'";
+    $ID = isset($_REQUEST['category_id']) ? $_REQUEST['category_id'] : '';
+    $query = "SELECT * FROM `tblnewscategory` WHERE `category_id`='$ID'";
     $result = mysqli_query($conn, $query);
-    $new = mysqli_fetch_array($result);
+    $row = mysqli_fetch_array($result);
     ?>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -147,71 +147,27 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Create News Post</h1>
+                    <h1 class="mt-4">Update Category</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                        <li class="breadcrumb-item active">News</li>
+                        <li class="breadcrumb-item active">category</li>
                     </ol>
-                    <form method="post" action="../db/updated_post.php?news_id=<?php echo $ID; ?>"
+                    <form method="post" action="../db/updated_category.php?category_id=<?php echo $ID ?>"
                         enctype="multipart/form-data">
                         <div>
-                            <div class="col-6 mt-3 mb-3">
-                                <label for="txtCategory"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                                <select id="txtCategory" name="txtCategory" class="form-control"
-                                    value="<?php echo $new['category_id']; ?>">
-                                    <option selected="">Select category</option>
-                                    <?php
-                                    include_once('../config.php');
-                                    $query = "SELECT * FROM `tblnewscategory` ORDER BY `category_id`";
-                                    $result = mysqli_query($conn, $query);
-                                    if (
-                                        mysqli_num_rows($result) >
-                                        0
-                                    ) {
-                                        while ($row = mysqli_fetch_array($result)) { ?>
-                                            <option selected=" value=" <?php echo $new['category_id']; ?>"
-                                                value=" <?php echo $row['category_id']; ?>">
-                                                <?php echo $row['category_name']; ?>
-                                            </option>
-                                            <?php
-                                        }
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-
-                            <div class="col-6  mb-3">
-                                <label for="txtTitle"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title
-                                </label>
-                                <input type="text" value="<?php echo $new['news_title']; ?>" name="txtTitle" id="title"
-                                    class="form-control" placeholder="Type title" required="" />
+                            <div class="col-6 my-3">
+                                <label for="txtname"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category
+                                    Name</label>
+                                <input type="text" value="<?php echo $row['category_name'] ?>" name="txtname" id="name"
+                                    class="form-control" placeholder="Type product name" required="" />
                             </div>
                             <div class="col-6 mb-3">
-                                <label for="txtContent"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Content</label>
-                                <textarea id="content" rows="8" name="txtContent" class="form-control"
-                                    placeholder="Your content here"><?php echo $new['news_content']; ?></textarea>
+                                <label for="txtDescription">Description</label>
+                                <textarea rows="8" name="txtDescription" class="form-control"
+                                    placeholder="Your description here"><?php echo $row['category_description'] ?></textarea>
                             </div>
-
-                            <div class="col-6">
-                                <div class="mb-3"> <label for="image"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image
-                                    </label>
-                                    <input type="file" name="files" class="form-control" accept="image/*"
-                                        onchange="updatePreview(this, 'image-preview')">
-                                </div>
-                                <div class="col mb-3">
-
-                                    <div class="p-4 border border-secondary">
-                                        <h6 class="border-bottom pb-3 mb-4">Image Preview</h6>
-                                        <div class="text-center">
-                                            <img id="image-preview" src="../images/<?php echo $new['image']; ?>"
-                                                style="width:240px">
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="col-6 mb-3 ">
                                 <button type="submit" class="btn btn-primary">Update </button>
                             </div>
                         </div>
@@ -235,19 +191,8 @@
     </div>
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/scripts.js"></script>
-    <script type="text/javascript">
-        function updatePreview(input, target) {
-            let file = input.files[0];
-            let reader = new FileReader();
+    <script src="../js/datatables-simple-demo.js"></script>
 
-            reader.readAsDataURL(file);
-            reader.onload = function () {
-                let img = document.getElementById(target);
-                // can also use "this.result"
-                img.src = reader.result;
-            }
-        }
-    </script>
 </body>
 
 </html>

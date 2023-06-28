@@ -162,13 +162,13 @@
                       Avatar
                     </th>
                     <th scope="col" class="px-6 py-3">
+                      First name
+                    </th>
+                    <th scope="col" class="px-6 py-3 font-medium text-gray-900">
+                      Last Name
+                    </th>
+                    <th scope="col" class="px-6 py-3 font-medium text-gray-900">
                       email
-                    </th>
-                    <th scope="col" class="px-6 py-3 font-medium text-gray-900">
-                      username
-                    </th>
-                    <th scope="col" class="px-6 py-3 font-medium text-gray-900">
-                      Display Name
                     </th>
                     <th scope="col" class="px-6 py-3 font-medium text-gray-900">
                       Status
@@ -194,16 +194,16 @@
                         </td>
                         <td>
                           <img style="width:40px;height:40px" class="rounded-pill object-cover object-center"
-                            src="<?php echo $row['img'] ?>" alt="<?php echo $row['img'] ?>" />
+                            src="../images/<?php echo $row['img'] ?>" alt="<?php echo $row['img'] ?>" />
                         </td>
                         <td class="px-6 py-3">
                           <?php echo $row['author_name']; ?>
                         </td>
                         <td class="px-6 py-3">
-                          <?php echo $row['author_email']; ?>
+                          <?php echo $row['last_name']; ?>
                         </td>
                         <td class="px-6 py-3">
-                          <?php echo $row['author_display_name'] ?>
+                          <?php echo $row['author_email']; ?>
                         </td>
                         <td class="px-6 py-3">
                           <?php
@@ -257,8 +257,7 @@
   </div>
   <script src="../js/bootstrap.bundle.min.js"></script>
   <script src="../js/scripts.js"></script>
-  <script src="../js/simple-datatables.min.js"
-    crossorigin="anonymous"></script>
+  <script src="../js/simple-datatables.min.js" crossorigin="anonymous"></script>
   <script src="../js/datatables-simple-demo.js"></script>
 </body>
 

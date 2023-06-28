@@ -160,7 +160,7 @@
                                     $output = $datetime->format("F j Y");
                                     ?>
                                     <div class="card mb-4">
-                                        <a href="#!"><img class="card-img-top" src="<?php echo $row['image'] ?>"
+                                        <a href="#!"><img class="card-img-top" src="../images/<?php echo $row['image'] ?>"
                                                 alt="..." /></a>
                                         <div class="card-body">
                                             <div class="small text-muted">

@@ -149,13 +149,15 @@
               <div class="col-lg-4">
                 <div class="card mb-4">
                   <div class="card-body text-center">
-                    <img src="<?= $user['img'] ?>" alt="avatar" class="rounded-circle img-fluid"
-                      style="width: 110px;height:110px" />
+                    <img src="../images/<?php echo $user['img'] ?>" alt="avatar" class="rounded-circle img-fluid"
+                      style="width: 119px;height:119px" />
                     <h5 class="my-3">
                       <?= $user['author_name'] ?>
                     </h5>
                     <p class="text-muted mb-1">Author</p>
-                    <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
+                    <p class="text-muted mb-4">
+                      <?= $user['address'] ?>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -164,11 +166,22 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col-sm-3">
-                        <p class="mb-0">Full Name</p>
+                        <p class="mb-0">First Name</p>
                       </div>
                       <div class="col-sm-9">
                         <p class="text-muted mb-0">
                           <?= $user['author_name'] ?>
+                        </p>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Last Name</p>
+                      </div>
+                      <div class="col-sm-9">
+                        <p class="text-muted mb-0">
+                          <?= $user['last_name'] ?>
                         </p>
                       </div>
                     </div>
@@ -189,7 +202,9 @@
                         <p class="mb-0">Phone</p>
                       </div>
                       <div class="col-sm-9">
-                        <p class="text-muted mb-0">(097) 234-5678</p>
+                        <p class="text-muted mb-0">
+                          <?= $user['phone'] ?>
+                        </p>
                       </div>
                     </div>
                     <hr />

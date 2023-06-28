@@ -8,13 +8,6 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-  <style type="text/tailwindcss">
-    @layer utilities {
-        .content-auto {
-          content-visibility: auto;
-        }
-      }
-    </style>
   <?php
   include("../config.php");
   session_start();
@@ -27,24 +20,24 @@
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
     // $active = $row['active'];
-  
+    $error = "";
     $count = mysqli_num_rows($result);
-    // If result matched $myusername and $mypassword, table row must be 1 row
     if ($count == 1) {
       $_SESSION["username"] = $username;
       $_SESSION['login_user'] = $myusername;
       header("location: index.php");
     } else {
       $error = "Your Login Name or Password is invalid";
+      echo "<p class='mt-6 text-center text-base text-red-600'>{$error}</p>";
     }
   }
   ?>
 </head>
 
 <body>
-  <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+  <div class="flex min-h-full flex-col justify-center px-6 py-8 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-      <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+      <h2 class="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
         Sign in to your account
       </h2>
     </div>
@@ -52,7 +45,7 @@
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <form class="space-y-6" action="" method="POST">
         <div>
-          <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
+          <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Enter your First name</label>
           <div class="mt-2">
             <input id="username" name="username" type="text" autocomplete="email" required
               class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
@@ -81,7 +74,7 @@
       </form>
       <p class="mt-10 text-center text-sm text-gray-500">
         Don't have an account?
-        <a href="./register.html" class="font-semibold leading-6 text-blue-600 hover:text-indigo-500">Register</a>
+        <a href="./register.php" class="font-semibold leading-6 text-blue-600 hover:text-indigo-500">Register</a>
       </p>
     </div>
   </div>

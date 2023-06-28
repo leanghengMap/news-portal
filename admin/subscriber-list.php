@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
   <?php
   include('./session.php');
   ?>
+  <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="" />
@@ -14,7 +14,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
   <link href="../css/styles.css" rel="stylesheet" />
-  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+  <script src="../js/fontawesome-all.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="sb-nav-fixed">
@@ -162,13 +162,13 @@
                       Avatar
                     </th>
                     <th scope="col" class="px-6 py-3">
+                      First name
+                    </th>
+                    <th scope="col" class="px-6 py-3 font-medium text-gray-900">
+                      Last Name
+                    </th>
+                    <th scope="col" class="px-6 py-3 font-medium text-gray-900">
                       email
-                    </th>
-                    <th scope="col" class="px-6 py-3 font-medium text-gray-900">
-                      username
-                    </th>
-                    <th scope="col" class="px-6 py-3 font-medium text-gray-900">
-                      Display Name
                     </th>
                     <th scope="col" class="px-6 py-3 font-medium text-gray-900">
                       Status
@@ -194,16 +194,16 @@
                         </td>
                         <td>
                           <img style="width:40px;height:40px" class="rounded-pill object-cover object-center"
-                            src="<?php echo $row['img'] ?>" alt="<?php echo $row['img'] ?>" />
+                            src="../images/<?php echo $row['img'] ?>" alt="<?php echo $row['img'] ?>" />
                         </td>
                         <td class="px-6 py-3">
                           <?php echo $row['author_name']; ?>
                         </td>
                         <td class="px-6 py-3">
-                          <?php echo $row['author_email']; ?>
+                          <?php echo $row['last_name']; ?>
                         </td>
                         <td class="px-6 py-3">
-                          <?php echo $row['author_display_name'] ?>
+                          <?php echo $row['author_email']; ?>
                         </td>
                         <td class="px-6 py-3">
                           <?php
@@ -261,4 +261,4 @@
   <script src="../js/datatables-simple-demo.js"></script>
 </body>
 
-</html
+</html>
