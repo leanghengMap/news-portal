@@ -243,7 +243,7 @@
                   include_once('./config.php');
                   $query = "SELECT * FROM `tblnews`
                     INNER JOIN `tblnewscategory` ON `tblnewscategory`.`category_id` = `tblnews`.`category_id`
-                    ORDER BY `news_id` ASC";
+                    ORDER BY `news_id` ASC LIMIT 4";
                   $result = mysqli_query($conn, $query);
                   ?>
                   <?php
