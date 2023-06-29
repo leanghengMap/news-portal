@@ -65,14 +65,13 @@
                 aria-current="page">Home</a>
             </li>
             <li>
-              <a href="./404.html"
+              <a href="./aboutus.php"
                 class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
             </li>
             <li>
-              <a href="#"
+              <a href="./contact.php"
                 class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
             </li>
-
             <?php
             if ($notLogin) {
               ?>
@@ -90,11 +89,19 @@
                 <a href="./logout.php"
                   class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">logout</a>
               </li>
+              <li> <button type="button" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
+                  data-dropdown-placement="bottom">
+                  <span class="sr-only">Open user menu</span>
+                  <img class="w-8 h-8 rounded-full" src="./images/<?php echo $user['iamge'] ?>" alt="user photo">
+                </button>
+              </li>
               <?php
             }
             ?>
           </ul>
+
         </div>
+
       </div>
     </nav>
 
@@ -301,6 +308,7 @@
           <li>
             <a href="#" class="hover:underline">Contact</a>
           </li>
+
         </ul>
       </div>
     </footer>
