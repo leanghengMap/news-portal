@@ -7,23 +7,7 @@
   ?>
   <?php
   include_once('../config.php');
-  $ID = isset($_REQUEST['news_id']) ? $_REQUEST['news_id'] : '';
-  // $query = "SELECT * FROM `tblnews` WHERE `news_id`='$ID'";
-  $query = "SELECT
-  `tblnews`.`news_id`,
-  `news_title`,
-  `news_content`,
-  `tblnewscategory`.`category_name`,
-  `tblauthor`.`author_name`,
-  `tblnews`.`created_date`,
-  `tblnews`.`image`,
-  `news_status`
-  FROM `tblnews`
-  INNER JOIN `tblnewscategory` ON `tblnewscategory`.`category_id` = `tblnews`.`category_id`
-  INNER JOIN `tblauthor` ON `tblauthor`.`author_id` = `tblnews`.`author_id`
-  WHERE `news_id`='$ID'";
-  $result = mysqli_query($conn, $query);
-  $item = mysqli_fetch_array($result);
+  include('../db/get_news_detail.php');
   ?>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />

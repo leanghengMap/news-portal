@@ -22,7 +22,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-  <title>NU NEWS - Home </title>
+  <title>NU NEWS - Home</title>
   <!-- Favicon-->
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
   <!-- Core theme CSS (includes Bootstrap)-->
@@ -42,7 +42,7 @@
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/news-portal" class="flex items-center">
-          <img src="./assets/logo.png" class=" h-20 mr-3" alt=" Logo" />
+          <img src="./assets/logo.png" class="h-20 mr-3" alt=" Logo" />
           <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">NORTON NEWS</span>
         </a>
         <button data-collapse-toggle="navbar-default" type="button"
@@ -76,8 +76,9 @@
             <?php
             if ($notLogin) {
               ?>
-              <a href="./login.php"
-                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Login</a>
+              <li>
+                <a href="./login.php"
+                  class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Login</a>
               </li>
               <li>
                 <a href="./register.php"
@@ -100,72 +101,27 @@
 
     <div class="max-w-7xl mt-5 mx-auto">
       <div>
-        <section>
-
-          <?php
-          include_once('./config.php');
-          $query = "SELECT * FROM `tblnews` ORDER BY `news_id` DESC LIMIT 3";
-          $result = mysqli_query($conn, $query);
-          ?>
-          <div class="grid grid-cols-3 space-x-4">
-            <?php
-            if (
-              mysqli_num_rows($result) >
-              0
-            ) {
-              while ($row = mysqli_fetch_array($result)) { ?>
-                <div class="item-wrap group">
-                  <div class="relative">
-                    <img src="./images/<?= $row['image'] ?>"
-                      class="h-[350px] w-full block object-center bg-center bg-no-repeat bg-cover" />
-                    <div class="z-[2] absolute hidden top-3 left-2">
-                      <ul class="post-categories flex gap-x-1">
-                        <li class="">
-                          <a class="text-white rounded-sm bg-emerald-500 p-1 text-xs font-semibold uppercase">business</a>
-                        </li>
-                      </ul>
-                    </div>
-                    <a href="./news-detail.php?news_id=<?php echo $row['news_id'] ?>" class="group block">
-                      <div style="transition: 0.6s"
-                        class="bg-hover h-full w-full absolute opacity-50 top-0 bg-gradient-to-t from-black to-black/20">
-                      </div>
-                    </a>
-                    <a href="./news-detail.php?news_id=<?php echo $row['news_id'] ?>" class="group block">
-                      <div class="absolute bottom-0 px-4 py-3 w-11/12">
-                        <h5 class="mb-2 text-xl font-medium leading-tight text-white">
-                          <?= $row['news_title'] ?>
-                        </h5>
-                        <h-6 class="text-base text-white text-medium">
-                          <?php $date = $row['created_date'];
-                          $datetime = new DateTime($date);
-                          echo $datetime->format("F j, Y"); ?>
-                        </h-6>
-                      </div>
-                    </a>
-
-                  </div>
-
-                </div>
-                <?php
-              }
-            }
-            ?>
-          </div>
-        </section>
         <section class="py-8">
           <h1 class="pb-8 text-2xl uppercase tracking-wider font-semibold">
-            ALL Posts
+            <?php
+            $categoryId = isset($_REQUEST['category_id']) ? $_REQUEST['category_id'] : '';
+            $query = " SELECT  `category_name`FROM `tblnewscategory` WHERE `category_id`='$categoryId'";
+            $result = mysqli_query($conn, $query);
+            $item = mysqli_fetch_array($result);
+            echo $item['category_name']
+              ?>
           </h1>
-          <div class="grid grid-cols-3 relative space-x-4">
+          <div class="grid grid-cols-2 relative space-x-4">
             <div class="col-span-2">
               <section class="text-gray-600 body-font">
                 <div class="container mx-auto">
-                  <div class="grid grid-cols-2 gap-4">
+                  <div class="grid grid-cols-4 gap-4">
                     <?php
                     include_once('./config.php');
                     $query = "SELECT * FROM `tblnews`
-                    INNER JOIN `tblnewscategory` ON `tblnewscategory`.`category_id` = `tblnews`.`category_id`
-                    ORDER BY `news_id` ASC";
+                    INNER JOIN `tblnewscategory` ON `tblnewscategory`.`category_id` = `tblnews`.`category_id` WHERE  `tblnews`.`category_id` = $categoryId
+                    ORDER BY `news_id` DESC ";
+
                     $result = mysqli_query($conn, $query);
                     ?>
                     <?php
@@ -175,26 +131,21 @@
                     ) {
                       while ($row = mysqli_fetch_array($result)) { ?>
                         <section>
-                          <div
-                            class="h-full relative border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-                            <a href="./news-detail.php?news_id=<?php echo $row['news_id'] ?>" class="group block">
+                          <a href="./news-detail.php?news_id=<?php echo $row['news_id'] ?>" class="group block">
+                            <div
+                              class="h-full relative border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                               <img
                                 class="lg:h-48 md:h-36 w-full transition duration-300 ease-in-out hover:scale-110 object-cover object-center"
                                 src="./images/<?= $row['image'] ?>" alt="blog" />
-                            </a>
-
-                            <div class="z-[2] absolute top-3 left-2">
-                              <ul class="post-categories flex gap-x-1">
-                                <li class="">
-                                  <a href="./category.php?category_id=<?php echo $row['category_id']; ?> "
-                                    class="text-white rounded-sm bg-emerald-500 p-1 text-xs font-semibold uppercase">
-                                    <?= $row['category_name'] ?>
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                            <a href="./news-detail.php?news_id=<?php echo $row['news_id'] ?>" class="group block">
-
+                              <div class="z-[2] absolute top-3 left-2">
+                                <ul class="post-categories flex gap-x-1">
+                                  <li class="">
+                                    <a class="text-white rounded-sm bg-emerald-500 p-1 text-xs font-semibold uppercase">
+                                      <?= $row['category_name'] ?>
+                                    </a>
+                                  </li>
+                                </ul>
+                              </div>
                               <div class="px-5 py-3">
                                 <div class="pb-2"></div>
                                 <h1 class="title-font text-lg font-medium text-gray-900 mb-2.5">
@@ -207,7 +158,8 @@
                                   <h-6 class="text-sm text-gray-400 text-medium">
                                     <?php $date = $row['created_date'];
                                     $datetime = new DateTime($date);
-                                    echo $datetime->format("F j, Y"); ?>
+                                    echo $datetime->format("F
+                                  j, Y"); ?>
                                   </h-6>
                                   <span
                                     class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
@@ -222,8 +174,8 @@
                                   </span>
                                 </div>
                               </div>
-                            </a>
-                          </div>
+                            </div>
+                          </a>
                         </section>
                         <?php
                       }
@@ -233,48 +185,6 @@
                 </div>
               </section>
             </div>
-            <div class="justify-end">
-              <div class="w-[94%] float-right sticky top-20">
-                <ul class="flex flex-col gap-y-6">
-                  <h1 class="text-lg uppercase tracking-wider font-semibold">
-                    Trending Posts
-                  </h1>
-                  <?php
-                  include_once('./config.php');
-                  $query = "SELECT * FROM `tblnews`
-                    INNER JOIN `tblnewscategory` ON `tblnewscategory`.`category_id` = `tblnews`.`category_id`
-                    ORDER BY `news_id` ASC";
-                  $result = mysqli_query($conn, $query);
-                  ?>
-                  <?php
-                  if (
-                    mysqli_num_rows($result) >
-                    0
-                  ) {
-                    while ($row = mysqli_fetch_array($result)) { ?>
-                      <li class="flex gap-3 font-normal text-primary-500">
-                        <div class="h-24 w-24 min-w-[96px]">
-                          <img class="h-full w-full min-w-full rounded-md shadow-lg object-cover object-center"
-                            src="./images/<?= $row['image'] ?>" alt="blog" />
-                        </div>
-                        <div class="text-sm flex flex-col justify-between">
-                          <div class="font-medium text-gray-700">
-                            <?= $row['news_title'] ?>
-                          </div>
-                          <div class="text-gray-400 uppercase">
-                            <?php $date = $row['created_date'];
-                            $datetime = new DateTime($date);
-                            echo $datetime->format("F j, Y"); ?>
-                          </div>
-                        </div>
-                      </li>
-                      <?php
-                    }
-                  }
-                  ?>
-                </ul>
-              </div>
-            </div>
           </div>
         </section>
       </div>
@@ -282,12 +192,12 @@
 
     <footer class="py-10">
       <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-        <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/"
-            class="hover:underline">NU DEV TEAM</a>. All Rights Reserved.
+        <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023
+          <a href="https://flowbite.com/" class="hover:underline">NU DEV TEAM</a>. All Rights Reserved.
         </span>
         <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
           <li>
-            <a href="#" class="mr-4 hover:underline md:mr-6 ">About</a>
+            <a href="#" class="mr-4 hover:underline md:mr-6">About</a>
           </li>
           <li>
             <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
@@ -301,7 +211,6 @@
         </ul>
       </div>
     </footer>
-
   </main>
 </body>
 
