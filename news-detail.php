@@ -34,6 +34,10 @@
     .item-wrap:hover .bg-hover {
       opacity: 1;
     }
+
+    .cardShadow {
+      box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    }
   </style>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
@@ -43,7 +47,7 @@
   <main>
     <!-- Responsive navbar-->
 
-    <nav class="bg-white border-gray-200 dark:bg-gray-900">
+    <nav class="bg-white border-gray-200 dark:bg-gray-900 z-20 top-0 sticky">
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/news-portal" class="flex items-center">
           <img src="./assets/logo.png" class=" h-20 mr-3" alt=" Logo" />

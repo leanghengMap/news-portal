@@ -39,7 +39,7 @@
   <main>
     <!-- Responsive navbar-->
 
-    <nav class="bg-white border-gray-200 dark:bg-gray-900">
+    <nav class="bg-white border-gray-200 dark:bg-gray-900 z-20 top-0 sticky">
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/news-portal" class="flex items-center">
           <img src="./assets/logo.png" class="h-20 mr-3" alt=" Logo" />

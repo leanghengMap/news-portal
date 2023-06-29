@@ -39,7 +39,7 @@
   <main>
     <!-- Responsive navbar-->
 
-    <nav class="bg-white border-gray-200 dark:bg-gray-900">
+    <nav class="bg-white border-gray-200 dark:bg-gray-900 z-20 top-0 sticky">
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/news-portal" class="flex items-center">
           <img src="./assets/logo.png" class=" h-20 mr-3" alt=" Logo" />
@@ -252,22 +252,25 @@
                     0
                   ) {
                     while ($row = mysqli_fetch_array($result)) { ?>
-                      <li class="flex gap-3 font-normal text-primary-500">
-                        <div class="h-24 w-24 min-w-[96px]">
-                          <img class="h-full w-full min-w-full rounded-md shadow-lg object-cover object-center"
-                            src="./images/<?= $row['image'] ?>" alt="blog" />
-                        </div>
-                        <div class="text-sm flex flex-col justify-between">
-                          <div class="font-medium text-gray-700">
-                            <?= $row['news_title'] ?>
+                      <a href="./news-detail.php?news_id=<?php echo $row['news_id'] ?>" class="group block">
+                        <li class="flex gap-3 font-normal text-primary-500">
+
+                          <div class="h-24 w-24 min-w-[96px]">
+                            <img class="h-full w-full min-w-full rounded-md shadow-lg object-cover object-center"
+                              src="./images/<?= $row['image'] ?>" alt="blog" />
                           </div>
-                          <div class="text-gray-400 uppercase">
-                            <?php $date = $row['created_date'];
-                            $datetime = new DateTime($date);
-                            echo $datetime->format("F j, Y"); ?>
+                          <div class="text-sm flex flex-col justify-between">
+                            <div class="font-medium text-gray-700">
+                              <?= $row['news_title'] ?>
+                            </div>
+                            <div class="text-gray-400 uppercase">
+                              <?php $date = $row['created_date'];
+                              $datetime = new DateTime($date);
+                              echo $datetime->format("F j, Y"); ?>
+                            </div>
                           </div>
-                        </div>
-                      </li>
+                        </li>
+                      </a>
                       <?php
                     }
                   }
