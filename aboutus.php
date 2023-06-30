@@ -49,16 +49,14 @@
           <ul
             class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
-              <a href="/news-portal"
-                class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
-                aria-current="page">Home</a>
+              <a href="/news-portal" aria-current="page">Home</a>
             </li>
             <li>
-              <a href="./404.html"
-                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
+              <a href="./aboutus.php"
+                class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 ">About</a>
             </li>
             <li>
-              <a href="#"
+              <a href="./contact.php"
                 class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
             </li>
 
@@ -97,9 +95,9 @@
                 OUR TEAM
               </h1>
               <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
-                Whatever cardigan tote bag tumblr hexagon brooklyn
-                asymmetrical gentrify, subway tile poke farm-to-table. Franzen
-                you probably haven't heard of them.
+                We are a team of developer students who love coding and learning new things. We work on various projects
+                together, from web development to machine learning. We always support each other and share our knowledge
+                and experience. We are not afraid of challenges and we enjoy having fun along the way
               </p>
             </div>
             <div class="flex flex-wrap -m-4">
@@ -107,15 +105,14 @@
                 <div
                   class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
                   <img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4"
-                    src="https://dummyimage.com/200x200" />
+                    src="./assets/img/photo_2020-07-04_18-03-30.jpg" />
                   <div class="flex-grow sm:pl-8">
                     <h2 class="title-font font-medium text-lg text-gray-900">
-                      Holden Caulfield
+                      Ly Meng ngoun
                     </h2>
-                    <h3 class="text-gray-500 mb-3">UI Developer</h3>
+                    <h3 class="text-gray-500 mb-3">Web Developer</h3>
                     <p class="mb-4">
-                      DIY tote bag drinking vinegar cronut adaptogen squid
-                      fanny pack vaporware.
+                      "Stay Strong " There's a rainbow , After every storm.
                     </p>
                     <span class="inline-flex">
                       <a class="text-gray-500">
@@ -148,15 +145,14 @@
                 <div
                   class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
                   <img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4"
-                    src="https://dummyimage.com/201x201" />
+                    src="./assets/img/IMG_1494.JPG" />
                   <div class="flex-grow sm:pl-8">
                     <h2 class="title-font font-medium text-lg text-gray-900">
-                      Alper Kamu
+                      Seng Kanika
                     </h2>
-                    <h3 class="text-gray-500 mb-3">Designer</h3>
+                    <h3 class="text-gray-500 mb-3">Web Developer</h3>
                     <p class="mb-4">
-                      DIY tote bag drinking vinegar cronut adaptogen squid
-                      fanny pack vaporware.
+                      If love is the answer, then could you rephrase the question?
                     </p>
                     <span class="inline-flex">
                       <a class="text-gray-500">
@@ -189,15 +185,14 @@
                 <div
                   class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
                   <img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4"
-                    src="https://dummyimage.com/204x204" />
+                    src="./assets/img/photo_2022-05-30_07-40-44.jpg" />
                   <div class="flex-grow sm:pl-8">
                     <h2 class="title-font font-medium text-lg text-gray-900">
-                      Atticus Finch
+                      Chao Seavthinh
                     </h2>
-                    <h3 class="text-gray-500 mb-3">UI Developer</h3>
+                    <h3 class="text-gray-500 mb-3">Mobile App Developer</h3>
                     <p class="mb-4">
-                      DIY tote bag drinking vinegar cronut adaptogen squid
-                      fanny pack vaporware.
+                      I have not failed I just found ten thousand ways that don’t work.
                     </p>
                     <span class="inline-flex">
                       <a class="text-gray-500">
@@ -230,15 +225,14 @@
                 <div
                   class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
                   <img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4"
-                    src="https://dummyimage.com/206x206" />
+                    src="./assets/img/photo_2023-05-09_18-41-57.jpg" />
                   <div class="flex-grow sm:pl-8">
                     <h2 class="title-font font-medium text-lg text-gray-900">
-                      Henry Letham
+                      Map Leangheng
                     </h2>
-                    <h3 class="text-gray-500 mb-3">Designer</h3>
+                    <h3 class="text-gray-500 mb-3">Web Developer</h3>
                     <p class="mb-4">
-                      DIY tote bag drinking vinegar cronut adaptogen squid
-                      fanny pack vaporware.
+                      Don't give up your dream, Keep sleeping.
                     </p>
                     <span class="inline-flex">
                       <a class="text-gray-500">
@@ -280,16 +274,14 @@
         </span>
         <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
           <li>
-            <a href="#" class="mr-4 hover:underline md:mr-6">About</a>
+            <a href="./aboutus.php" class="mr-4 hover:underline md:mr-6">About</a>
           </li>
           <li>
-            <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+            <a href="" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
           </li>
+
           <li>
-            <a href="#" class="mr-4 hover:underline md:mr-6">Licensing</a>
-          </li>
-          <li>
-            <a href="#" class="hover:underline">Contact</a>
+            <a href="./contact.php" class="hover:underline">Contact</a>
           </li>
         </ul>
       </div>

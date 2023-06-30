@@ -2,7 +2,7 @@
 $server = "localhost";
 $user = "root";
 $psw = "";
-$db = "news-portal";
+$db = "news_portal";
 // Create connection
 $conn = mysqli_connect($server, $user, $psw);
 $sql = mysqli_select_db($conn, $db);

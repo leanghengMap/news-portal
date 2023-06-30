@@ -48,18 +48,18 @@
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
           <ul
             class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+      
             <li>
               <a href="/news-portal"
-                class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
-                aria-current="page">Home</a>
+                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Home</a>
             </li>
             <li>
-              <a href="./404.html"
+              <a href="./aboutus.php"
                 class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
             </li>
             <li>
-              <a href="#"
-                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
+              <a href="./contact.php"
+                class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 ">Contact</a>
             </li>
 
             <?php
@@ -97,8 +97,17 @@
                 Contact Us
               </h1>
               <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
-                <!-- How can we help you
-              </p> -->
+                Whether you have a question, a comment, or a suggestion, we’d love to hear from you.
+              </p>
+
+              <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+                You can reach us by
+                phone, email, or social media.</p>
+              <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+                Or you can fill out the form below and we’ll get back to you as soon as
+                possible.!</p>
+              <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+                Thank you for choosing us!</p>
             </div>
             <div class="lg:w-1/2 md:w-2/3 mx-auto">
               <div class="flex flex-wrap -m-2">
@@ -125,7 +134,7 @@
                 </div>
                 <div class="p-2 w-full">
                   <button
-                    class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                    class="flex mx-auto text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                     Button
                   </button>
                 </div>
@@ -184,9 +193,6 @@
           </li>
           <li>
             <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
-          </li>
-          <li>
-            <a href="#" class="mr-4 hover:underline md:mr-6">Licensing</a>
           </li>
           <li>
             <a href="#" class="hover:underline">Contact</a>
